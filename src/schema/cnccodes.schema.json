@@ -1,0 +1,79 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "G/M Code Dictionary",
+    "description": "JSON Schema for CNC G & M Codes",
+    "type": "object",
+    "required": [
+        "type",
+        "machineType",
+        "title"
+    ],
+    "properties": {
+        "$schema": {
+            "description": "Link to this schema",
+            "type": "string"
+        },
+        "type": {
+            "description": "The type of code (G or M)",
+            "type": "string",
+            "enum": [
+                "gcode",
+                "mcode"
+            ]
+        },
+        "machineType": {
+            "description": "The type of CNC machine",
+            "type": "string",
+            "enum": [
+                "mill",
+                "lathe",
+                "3dprinter"
+            ]
+        },
+        "title": {
+            "description": "Descriptive title of the JSON",
+            "type": "string"
+        },
+        "codes": {
+            "description": "Individual G-Codes",
+            "type": "object",
+            "patternProperties": {
+                "^G|^M": {
+                    "type": "object",
+                    "properties": {
+                        "category": {
+                            "description": "Category for the code",
+                            "type": "string",
+                            "enum": [
+                                "motion",
+                                "coordinate",
+                                "compensation",
+                                "canned",
+                                "other"
+                            ]
+                        },
+                        "modal": {
+                            "description": "Modal / Non-Modal (boolean)",
+                            "type": "boolean"
+                        },
+                        "shortDesc": {
+                            "description": "A short description of the code",
+                            "type": "string"
+                        },
+                        "desc": {
+                            "description": "A longer description with markdown formatting",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                        "category",
+                        "modal"
+                    ]
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false
+}
