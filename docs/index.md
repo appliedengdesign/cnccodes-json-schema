@@ -1,4 +1,4 @@
-# JSON Schema
+# 2021-03 Draft Schema
 
 ```json
 {
