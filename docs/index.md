@@ -3,6 +3,7 @@
 ```json
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2021-03/schema",
     "title": "G/M Code Dictionary",
     "description": "JSON Schema for CNC G & M Codes",
     "type": "object",
