@@ -3,4 +3,4 @@ theme: jekyll-theme-architect
 title: CNC Codes JSON Schema
 description: JSON Schema for CNC G & M Codes
 
-show_downloads: "false"
+show_downloads: false
