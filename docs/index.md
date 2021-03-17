@@ -1,5 +1,7 @@
 # 2021-03 Draft Schema
 
+[Link to Schema](https://appliedengdesign.github.io/cnccodes-json-schema/draft/2021-03/schem)
+
 ```json
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -67,7 +69,8 @@
                         "desc": {
                             "description": "A longer description with markdown formatting",
                             "type": "string"
-                        }
+                        },
+                        "parameters": { "$ref": "#/$defs/parameters" }
                     },
                     "additionalProperties": false,
                     "required": [
@@ -79,6 +82,30 @@
             }
         }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "$defs": {
+        "parameters": {
+            "description": "An array of possible parameters to the code",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "patternProperties": {
+                    "^[A-Z]{1}": {
+                        "type": "object",
+                        "properties": {
+                            "desc": {
+                                "description": "A description of the parameter",
+                                "type": "string"
+                            },
+                            "optional": {
+                                "description": "Parameter is required (boolean)",
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 ```
