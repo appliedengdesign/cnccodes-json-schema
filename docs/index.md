@@ -70,7 +70,9 @@
                             "description": "A longer description with markdown formatting",
                             "type": "string"
                         },
-                        "parameters": { "$ref": "#/$defs/parameters" }
+                        "parameters": {
+                            "$ref": "#/$defs/parameters"
+                        }
                     },
                     "additionalProperties": false,
                     "required": [
@@ -86,21 +88,18 @@
     "$defs": {
         "parameters": {
             "description": "An array of possible parameters to the code",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "patternProperties": {
-                    "^[A-Z]{1}": {
-                        "type": "object",
-                        "properties": {
-                            "desc": {
-                                "description": "A description of the parameter",
-                                "type": "string"
-                            },
-                            "optional": {
-                                "description": "Parameter is required (boolean)",
-                                "type": "boolean"
-                            }
+            "type": "object",
+            "patternProperties": {
+                "^[A-Z]{1}": {
+                    "type": "object",
+                    "properties": {
+                        "desc": {
+                            "description": "A description of the parameter",
+                            "type": "string"
+                        },
+                        "optional": {
+                            "description": "Parameter is required (boolean)",
+                            "type": "boolean"
                         }
                     }
                 }
