@@ -26,9 +26,12 @@
             "description": "The type of CNC machine",
             "type": "string",
             "enum": [
+                "edm",
                 "mill",
                 "lathe",
-                "printer"
+                "laser",
+                "printer",
+                "swiss"
             ]
         },
         "title": {
