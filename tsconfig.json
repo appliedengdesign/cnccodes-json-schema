@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Node 16",
+
+    "compilerOptions": {
+        "lib": ["ES2021"],
+        "module": "CommonJS",
+        "target": "ES2021",
+        "strict": true,
+        "declaration": true,
+        "moduleResolution": "node",
+        "newLine": "lf",
+        "removeComments": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "outDir": "./dist",
+        "resolveJsonModule": true,
+        "allowJs": true
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "scripts",
+        "docs"
+    ]
+}
