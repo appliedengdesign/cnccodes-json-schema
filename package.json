@@ -34,7 +34,7 @@
         "access": "public"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsc --project tsconfig.build.json",
         "clean": "shx rm -rf dist/*",
         "compile": "tsc",
         "test": "mocha --require ts-node/register test/**/*.ts"
