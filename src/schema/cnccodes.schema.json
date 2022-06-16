@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2021-12/schema",
+    "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-06/schema",
     "title": "G/M Code Dictionary",
     "description": "JSON Schema for CNC G & M Codes",
     "type": "object",
@@ -34,12 +34,19 @@
                 "swiss"
             ]
         },
+        "variant": {
+            "description": "Defined if G/M Codes are for specific MTB/3DP Variant. (Must be lower case, 3-8 characters)",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 8,
+            "pattern": "[A-Za-z0-9]"
+        },
         "title": {
             "description": "Descriptive title of the JSON",
             "type": "string"
         },
         "codes": {
-            "description": "Individual G-Codes",
+            "description": "Individual G/M Codes",
             "type": "object",
             "patternProperties": {
                 "^G|^M": {
@@ -63,11 +70,13 @@
                         },
                         "shortDesc": {
                             "description": "A short description of the code",
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 3
                         },
                         "desc": {
                             "description": "A longer description with markdown formatting",
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 3
                         },
                         "parameters": {
                             "$ref": "#/$defs/parameters"
@@ -92,15 +101,26 @@
                 "^[A-Z]{1}": {
                     "type": "object",
                     "properties": {
+                        "shortDesc": {
+                            "description": "A short description of the parameter",
+                            "type": "string",
+                            "minLength": 3
+                        },
                         "desc": {
                             "description": "A description of the parameter",
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 3
                         },
                         "optional": {
                             "description": "Parameter is required (boolean)",
                             "type": "boolean"
                         }
-                    }
+                    },
+                    "required": [
+                        "shortDesc",
+                        "optional"
+                    ],
+                    "additionalProperties": false
                 }
             }
         }
