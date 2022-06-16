@@ -1,6 +1,6 @@
 {
     "name": "@appliedengdesign/cnccodes-json-schema",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "JSON Schema for CNC G & M Codes",
     "author": "Mike Centola",
     "license": "MIT",
