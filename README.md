@@ -6,7 +6,140 @@
 
 This project is a schema definition for using JSON to store description and usage information about G & M codes. It was developed out of a necessity for [G-Code Reference](https://github.com/appliedengdesign/gcode-reference). It will be updated as the needs arise for the various types of G/M codes and various Machine Tools or 3D Printers.
 
-Latest Draft Version: 2021-12
+Latest Draft Version: 2022-06
+
+## Schema
+
+```json
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-06/schema",
+    "title": "G/M Code Dictionary",
+    "description": "JSON Schema for CNC G & M Codes",
+    "type": "object",
+    "required": [
+        "type",
+        "machineType",
+        "title"
+    ],
+    "properties": {
+        "$schema": {
+            "description": "Link to this schema",
+            "type": "string"
+        },
+        "type": {
+            "description": "The type of code (G or M)",
+            "type": "string",
+            "enum": [
+                "gcode",
+                "mcode"
+            ]
+        },
+        "machineType": {
+            "description": "The type of CNC machine",
+            "type": "string",
+            "enum": [
+                "edm",
+                "mill",
+                "lathe",
+                "laser",
+                "printer",
+                "swiss"
+            ]
+        },
+        "variant": {
+            "description": "Defined if G/M Codes are for specific MTB/3DP Variant. (Must be lower case, 3-8 characters)",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 8,
+            "pattern": "[A-Za-z0-9]"
+        },
+        "title": {
+            "description": "Descriptive title of the JSON",
+            "type": "string"
+        },
+        "codes": {
+            "description": "Individual G/M Codes",
+            "type": "object",
+            "patternProperties": {
+                "^G|^M": {
+                    "type": "object",
+                    "properties": {
+                        "category": {
+                            "description": "Category for the code",
+                            "type": "string",
+                            "enum": [
+                                "motion",
+                                "coordinate",
+                                "compensation",
+                                "canned",
+                                "other",
+                                "mcode"
+                            ]
+                        },
+                        "modal": {
+                            "description": "Modal / Non-Modal (boolean)",
+                            "type": "boolean"
+                        },
+                        "shortDesc": {
+                            "description": "A short description of the code",
+                            "type": "string",
+                            "minLength": 3
+                        },
+                        "desc": {
+                            "description": "A longer description with markdown formatting",
+                            "type": "string",
+                            "minLength": 3
+                        },
+                        "parameters": {
+                            "$ref": "#/$defs/parameters"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                        "category",
+                        "shortDesc"
+                    ]
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false,
+    "$defs": {
+        "parameters": {
+            "description": "An array of possible parameters to the code",
+            "type": "object",
+            "patternProperties": {
+                "^[A-Z]{1}": {
+                    "type": "object",
+                    "properties": {
+                        "shortDesc": {
+                            "description": "A short description of the parameter",
+                            "type": "string",
+                            "minLength": 3
+                        },
+                        "desc": {
+                            "description": "A description of the parameter",
+                            "type": "string",
+                            "minLength": 3
+                        },
+                        "optional": {
+                            "description": "Parameter is required (boolean)",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "shortDesc",
+                        "optional"
+                    ],
+                    "additionalProperties": false
+                }
+            }
+        }
+    }
+}
+```
 
 ## Goals
 
