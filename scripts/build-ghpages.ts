@@ -10,10 +10,14 @@ import fs from 'fs';
 import path from 'path';
 import cncCodesJSONSchema from '../src/schema/cnccodes.schema.json';
 
+// UPDATE DOCS //
+
 // Copy README.md over to /docs
 process.stdout.write('Copying README.md...');
 fs.copyFileSync(path.join(__dirname, '..', 'README.md'), path.join(__dirname, '..', 'docs', 'README.md'));
 process.stdout.write('Done!\n');
+
+// UPDATE SCHEMA //
 
 // Remove old schema folders
 process.stdout.write('Removing old schema...');
