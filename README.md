@@ -145,13 +145,32 @@ Latest Draft Version: 2022-06
 
 Provide a an accurate JSON Schema to validate JSON files containing G & M code information.
 
-## Install
+## Usage
 
-To install the latest version:
+Use the schema in your JSON that describes a set of G & M codes in your project (Or use our [gcode-reference](https://github.com/appliedengdesign/gcode-reference) project) by adding [https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-06/schema](https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-06/schema) to your `$schema` reference in your JSON file.
+
+Alternatively, you can install this as a package inside of your Javscript or Typescript project:
+
+Install the latest version:
 
 `npm install @appliedengdesign/cnccodes-json-schema`
 
-## Usage
+Reference the schema file from `node_modules`:
+
+`node_modules/@appliedengdesign/cnccodes-json-schema/dist/schema/cnccodes.schema.json`
+
+Or use directly in script applications:
+
+```javascript
+// Import the Schema
+import { cncCodesJSONSchema } from 'cnccodes-json-schema';
+// OR
+const cncCodesJSONSchema = require('cnccodes-json-schema');
+
+// Use schema with AJV
+const Ajv = require('ajv').default;
+const validate = ajv.compile(cncCodesJSONSchema);
+```
 
 ## Issues
 
