@@ -14,7 +14,7 @@ import cncCodesJSONSchema from '../src/schema/cnccodes.schema.json';
 
 // Copy README.md over to /docs
 process.stdout.write('Copying README.md...');
-fs.copyFileSync(path.join(__dirname, '..', 'README.md'), path.join(__dirname, '..', 'docs', 'README.md'));
+fs.copyFileSync(path.join(__dirname, '..', 'README.md'), path.join(__dirname, '..', 'docs', 'index.md'));
 process.stdout.write('Done!\n');
 
 // UPDATE SCHEMA //
