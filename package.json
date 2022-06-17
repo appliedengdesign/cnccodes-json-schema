@@ -35,6 +35,7 @@
     },
     "scripts": {
         "build": "tsc --project tsconfig.build.json",
+        "build-ghp": "npx ts-node ./scripts/build-ghpages.ts",
         "clean": "shx rm -rf dist/*",
         "compile": "tsc",
         "test": "mocha --require ts-node/register test/**/*.ts"
@@ -42,6 +43,7 @@
     "devDependencies": {
         "@types/chai": "^4.3.1",
         "@types/mocha": "^9.1.1",
+        "@types/node": "^18.0.0",
         "@typescript-eslint/eslint-plugin": "^5.28.0",
         "@typescript-eslint/parser": "^5.28.0",
         "ajv": "^8.11.0",
