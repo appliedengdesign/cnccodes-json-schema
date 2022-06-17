@@ -1,0 +1,28 @@
+{
+    "$schema": "../../src/schema/cnccodes.schema.json",
+    "type": "gcode",
+    "machineType": "mill",
+    "title": "G Code Milling Reference",
+    "codes": {
+        "G00": {
+            "category": "motion",
+            "shortDesc": "Rapid Motion Positioning",
+            "desc": "G00 is used to move the machine axes at the maximum speed. This G code is modal.",
+            "modal": true,
+            "parameters": {
+                "X": {
+                    "shortDesc": "X-Axis motion command",
+                    "optional": true
+                },
+                "Y": {
+                    "shortDesc": "Y-Axis motion command",
+                    "optional": true
+                },
+                "Z": {
+                    "desc": "Z-Axis motion command",
+                    "optional": true
+                }
+            }
+        }
+    }
+}
