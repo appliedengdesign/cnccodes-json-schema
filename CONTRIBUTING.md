@@ -16,6 +16,7 @@ To contribute to [CNC Codes JSON Schema](https://github.com/appliedengdesign/cnc
 The content in this repository is as follows:
 
 * `/docs` - Location of Github Pages for schema
+* `/scripts` - Location of helper scripts
 * `/src` - Main Source Files of npm package
   * `/src/schema/` - Location of JSON Schema file
 * `/test` - Mocha test to validate schema
@@ -29,9 +30,15 @@ Create a local working branch that is specific to the scope of the changes that 
 
 [Visual Studio Code](https://code.visualstudio.com) is a preferred tool to work on this project.
 
+### Useful Scripts
+
+* `npm run test` - Runs a Mocha test against the JSON Schema
+* `npm run build-ghp` - Builds the GitHub Pages with the current working schema and README
+
 ### Submitting Changes
 
 * Push your changes to the branch in your fork of the repository.
+* Validate your changes using the script `npm run test` and look for any breaking issues.
 * Submit a pull request to the [development branch](https://github.com/appliedengdesign/cnccodes-json-schema/tree/dev) of the [cnccodes-json-schema](https://github.com/appliedengdesign/cnccodes-json-schema) respository.
 * Make sure to explicitly say not to complete pull request if you are still making changes.
 
