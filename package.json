@@ -1,0 +1,61 @@
+{
+    "name": "@appliedengdesign/cnccodes-json-schema",
+    "version": "0.1.0",
+    "description": "JSON Schema for CNC G & M Codes",
+    "author": "Mike Centola",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/appliedengdesign/cnccodes-json-schema"
+    },
+    "keywords": [
+        "cnc",
+        "schema",
+        "json",
+        "reference",
+        "json-schema",
+        "appliedengdesign",
+        "nodejs"
+    ],
+    "bugs": {
+        "url": "https://github.com/appliedengdesign/cnccodes-json-schema/issues"
+    },
+    "homepage": "https://appliedengdesign.github.io/cnccodes-json-schema/",
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/appliedengdesign"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc --project tsconfig.build.json",
+        "build-ghp": "npx ts-node ./scripts/build-ghpages.ts",
+        "clean": "shx rm -rf dist/*",
+        "compile": "tsc",
+        "prepack": "npm run clean && npm run build",
+        "test": "mocha --require ts-node/register test/**/*.ts"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.3.1",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "^18.0.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.0",
+        "@typescript-eslint/parser": "^5.30.0",
+        "ajv": "^8.11.0",
+        "chai": "^4.3.6",
+        "eslint": "^8.18.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-prettier": "^4.1.0",
+        "mocha": "^10.0.0",
+        "prettier": "^2.7.1",
+        "shx": "^0.3.4",
+        "ts-node": "^10.8.1"
+    }
+}
