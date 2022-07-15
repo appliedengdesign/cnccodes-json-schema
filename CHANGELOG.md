@@ -2,7 +2,13 @@
 
 All changes to the CNC Codes JSON Schema will be documented here.
 
-## v0.2.0 [#](https://github.com/appliedengdesign/cnccodes-json-schema/releases/tag/v0.1.0)
+## v0.2. [#](https://github.com/appliedengdesign/cnccodes-json-schema/releases/tag/v0.2.2)
+
+### Fixes
+
+- Typos in CHANGELOG and README
+
+## v0.2.1 [#](https://github.com/appliedengdesign/cnccodes-json-schema/releases/tag/v0.2.1)
 
 ### New Features
 
