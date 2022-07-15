@@ -1,4 +1,4 @@
-[![MIT License](https://badgen.net/badge/license/MIT)](https://opensource.org/licenses/MIT)
+[!NPM Version](https://badgen.net/npm/v/@appliedengdesign/cnccodes-json-schema) [!NPM DL](https://badgen.net/npm/dt/@appliedengdesign/cnccodes-json-schema) [![MIT License](https://badgen.net/badge/license/MIT)](https://opensource.org/licenses/MIT)
 
 [![Follow @appliedengdesign](https://badgen.net/twitter/follow/appliedengdes)](https://twitter.com/appliedengdes)
 
@@ -6,26 +6,44 @@
 
 This project is a schema definition for using JSON to store description and usage information about G & M codes. It was developed out of a necessity for [G-Code Reference](https://github.com/appliedengdesign/gcode-reference). It will be updated as the needs arise for the various types of G/M codes and various Machine Tools or 3D Printers.
 
-Latest Draft Version: 2022-06
+Latest Draft Version: 2022-07
+
+Previous Versions: [2022-06](https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-06/schema)
 
 ## Schema
 
 ```json
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-06/schema",
+    "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-07/schema",
     "title": "G/M Code Dictionary",
     "description": "JSON Schema for CNC G & M Codes",
     "type": "object",
     "required": [
+        "title",
+        "description",
         "type",
-        "machineType",
-        "title"
+        "machineType"
     ],
     "properties": {
         "$schema": {
             "description": "Link to this schema",
             "type": "string"
+        },
+        "title": {
+            "description": "Descriptive title of the JSON Reference",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of the JSON Reference",
+            "type": "string"
+        },
+        "keywords": {
+            "description": "An Array of string keywords describing the JSON Reference (Optional)",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         },
         "type": {
             "description": "The type of code (G or M)",
@@ -53,10 +71,6 @@ Latest Draft Version: 2022-06
             "minLength": 3,
             "maxLength": 8,
             "pattern": "[A-Za-z0-9]"
-        },
-        "title": {
-            "description": "Descriptive title of the JSON",
-            "type": "string"
         },
         "codes": {
             "description": "Individual G/M Codes",
@@ -102,7 +116,8 @@ Latest Draft Version: 2022-06
                     ]
                 },
                 "additionalProperties": false
-            }
+            },
+            "minProperties": 1
         }
     },
     "additionalProperties": false,
@@ -135,7 +150,8 @@ Latest Draft Version: 2022-06
                     ],
                     "additionalProperties": false
                 }
-            }
+            },
+            "minProperties": 1
         }
     }
 }
