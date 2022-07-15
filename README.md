@@ -1,4 +1,4 @@
-[!NPM Version](https://badgen.net/npm/v/@appliedengdesign/cnccodes-json-schema) [!NPM DL](https://badgen.net/npm/dt/@appliedengdesign/cnccodes-json-schema) [![MIT License](https://badgen.net/badge/license/MIT)](https://opensource.org/licenses/MIT)
+[[!NPM Version](https://badgen.net/npm/v/@appliedengdesign/cnccodes-json-schema)](<https://www.npmjs.com/package/@appliedengdesign/cnccodes-json-schema>) [[!NPM DL](https://badgen.net/npm/dt/@appliedengdesign/cnccodes-json-schema)](<https://www.npmjs.com/package/@appliedengdesign/cnccodes-json-schema>) [![MIT License](https://badgen.net/badge/license/MIT)](https://opensource.org/licenses/MIT)
 
 [![Follow @appliedengdesign](https://badgen.net/twitter/follow/appliedengdes)](https://twitter.com/appliedengdes)
 
