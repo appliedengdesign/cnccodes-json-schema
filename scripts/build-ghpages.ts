@@ -13,16 +13,11 @@ import cncCodesJSONSchema from '../src/schema/cnccodes.schema.json';
 // UPDATE DOCS //
 
 // Copy README.md over to /docs
-process.stdout.write('Copying README.md...');
+process.stdout.write('Copying README.md --> index.md...');
 fs.copyFileSync(path.join(__dirname, '..', 'README.md'), path.join(__dirname, '..', 'docs', 'index.md'));
 process.stdout.write('Done!\n');
 
 // UPDATE SCHEMA //
-
-// Remove old schema folders
-process.stdout.write('Removing old schema...');
-fs.rmSync(path.join(__dirname, '..', 'docs', 'draft'), { force: true, recursive: true });
-process.stdout.write('Done!\n');
 
 // Get Schema draft location name
 const folderName = cncCodesJSONSchema.$id.split('/')[5];
@@ -30,8 +25,12 @@ process.stdout.write(`Current Schema: ${folderName}\n`);
 
 // Create new folder structure
 process.stdout.write('Creating folder...');
-fs.mkdirSync(path.join(__dirname, '..', 'docs', 'draft', folderName), { recursive: true });
-process.stdout.write('Done!\n');
+if (!fs.existsSync(path.join(__dirname, '..', 'docs', 'draft', folderName))) {
+    fs.mkdirSync(path.join(__dirname, '..', 'docs', 'draft', folderName), { recursive: true });
+    process.stdout.write('Done!\n');
+} else {
+    process.stdout.write('Exists!\n');
+}
 
 // Copy schema over
 process.stdout.write('Copying...');
