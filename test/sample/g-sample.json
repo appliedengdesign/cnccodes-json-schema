@@ -3,6 +3,7 @@
     "type": "gcode",
     "machineType": "mill",
     "title": "G Code Milling Reference",
+    "description": "G-Code Reference for Milling Machine Tools",
     "codes": {
         "G00": {
             "category": "motion",
