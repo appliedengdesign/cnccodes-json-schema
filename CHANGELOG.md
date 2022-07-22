@@ -2,7 +2,23 @@
 
 All changes to the CNC Codes JSON Schema will be documented here.
 
-## v0.2. [#](https://github.com/appliedengdesign/cnccodes-json-schema/releases/tag/v0.2.2)
+## v0.3.0 [#](https://github.com/appliedengdesign/cnccodes-json-schema/releases/tag/v0.3.0)
+
+### New Features
+
+- *BREAKING* Added `remove` array property to `variant` (Now an object) for modifying JSON for which it is a variant
+
+### Fixes
+
+- Fixed tests to provide more information if the schema is invalid
+
+### Other
+
+- Updated dependencies
+- Updated [README](README.md)
+- `variant` is now object with `name` property and `remove` array.
+
+## v0.2.2 [#](https://github.com/appliedengdesign/cnccodes-json-schema/releases/tag/v0.2.2)
 
 ### Fixes
 

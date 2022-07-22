@@ -6,7 +6,7 @@
 
 This project is a schema definition for using JSON to store description and usage information about G & M codes. It was developed out of a necessity for [G-Code Reference](https://github.com/appliedengdesign/gcode-reference). It will be updated as the needs arise for the various types of G/M codes and various Machine Tools or 3D Printers.
 
-Latest NPM Version: v0.2.2
+Latest NPM Version: v0.3.0
 
 Latest Draft Schema Version: 2022-07
 
