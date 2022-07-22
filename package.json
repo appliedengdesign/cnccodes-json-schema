@@ -34,11 +34,14 @@
         "access": "public"
     },
     "scripts": {
-        "build": "tsc --project tsconfig.build.json",
+        "build": "npm run test && tsc --project tsconfig.build.json",
         "build-ghp": "npx ts-node ./scripts/build-ghpages.ts",
         "clean": "shx rm -rf dist/*",
         "compile": "tsc",
+        "lint": "eslint src/**/*.ts --fix",
+        "refresh": "shx rm -rf ./node_modules ./package-lock.json && npm install",
         "prepack": "npm run clean && npm run build",
+        "pretty": "prettier --config .prettierrc --loglevel warn --write",
         "test": "mocha --require ts-node/register test/**/*.ts"
     },
     "devDependencies": {
