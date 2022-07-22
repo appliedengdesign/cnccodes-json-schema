@@ -4,6 +4,13 @@
     "machineType": "mill",
     "title": "G Code Milling Reference",
     "description": "G-Code Reference for Milling Machine Tools",
+    "variant": {
+        "name": "snpmaker",
+        "remove": [
+            "M07",
+            "M08"
+        ]
+    },
     "codes": {
         "G00": {
             "category": "motion",
@@ -20,7 +27,7 @@
                     "optional": true
                 },
                 "Z": {
-                    "desc": "Z-Axis motion command",
+                    "shortDesc": "Z-Axis motion command",
                     "optional": true
                 }
             }
