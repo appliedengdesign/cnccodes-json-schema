@@ -1,4 +1,4 @@
-[!NPM Version](https://badgen.net/npm/v/@appliedengdesign/cnccodes-json-schema) [!NPM DL](https://badgen.net/npm/dt/@appliedengdesign/cnccodes-json-schema) [![MIT License](https://badgen.net/badge/license/MIT)](https://opensource.org/licenses/MIT)
+[![NPM Version](https://badgen.net/npm/v/@appliedengdesign/cnccodes-json-schema)](https://www.npmjs.com/package/@appliedengdesign/cnccodes-json-schema) [![NPM DL](https://badgen.net/npm/dt/@appliedengdesign/cnccodes-json-schema)](https://www.npmjs.com/package/@appliedengdesign/cnccodes-json-schema) [![MIT License](https://badgen.net/badge/license/MIT)](https://opensource.org/licenses/MIT)
 
 [![Follow @appliedengdesign](https://badgen.net/twitter/follow/appliedengdes)](https://twitter.com/appliedengdes)
 
@@ -6,7 +6,9 @@
 
 This project is a schema definition for using JSON to store description and usage information about G & M codes. It was developed out of a necessity for [G-Code Reference](https://github.com/appliedengdesign/gcode-reference). It will be updated as the needs arise for the various types of G/M codes and various Machine Tools or 3D Printers.
 
-Latest Draft Version: 2022-07
+Latest NPM Version: v0.3.0
+
+Latest Draft Schema Version: 2022-07
 
 Previous Versions: [2022-06](https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-06/schema)
 
@@ -67,10 +69,22 @@ Previous Versions: [2022-06](https://appliedengdesign.github.io/cnccodes-json-sc
         },
         "variant": {
             "description": "Defined if G/M Codes are for specific MTB/3DP Variant. (Must be lower case, 3-8 characters)",
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 8,
-            "pattern": "[A-Za-z0-9]"
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 8,
+                    "pattern": "[a-z0-9]"
+                },
+                "remove": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                }
+            }
         },
         "codes": {
             "description": "Individual G/M Codes",
