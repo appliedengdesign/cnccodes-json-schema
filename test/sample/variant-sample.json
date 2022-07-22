@@ -1,0 +1,36 @@
+{
+    "$schema": "../../src/schema/cnccodes.schema.json",
+    "type": "gcode",
+    "machineType": "mill",
+    "title": "G Code Milling Reference",
+    "description": "G-Code Reference for Milling Machine Tools",
+    "variant": {
+        "name": "snpmaker",
+        "remove": [
+            "M07",
+            "M08"
+        ]
+    },
+    "codes": {
+        "G00": {
+            "category": "motion",
+            "shortDesc": "Rapid Motion Positioning",
+            "desc": "G00 is used to move the machine axes at the maximum speed. This G code is modal.",
+            "modal": true,
+            "parameters": {
+                "X": {
+                    "shortDesc": "X-Axis motion command",
+                    "optional": true
+                },
+                "Y": {
+                    "shortDesc": "Y-Axis motion command",
+                    "optional": true
+                },
+                "Z": {
+                    "shortDesc": "Z-Axis motion command",
+                    "optional": true
+                }
+            }
+        }
+    }
+}
