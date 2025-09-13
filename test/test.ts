@@ -4,9 +4,9 @@
  * -------------------------------------------------------------------------------------------- */
 'use strict';
 
+import Ajv from 'ajv/dist/2020';
 import { expect } from 'chai';
 import { cncCodesJSONSchema } from '../src';
-import Ajv from 'ajv/dist/2020';
 import gsample from './sample/g-sample.json';
 import msample from './sample/m-sample.json';
 import variant from './sample/variant-sample.json';
