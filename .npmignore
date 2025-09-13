@@ -1,4 +1,4 @@
-.eslintrc.json
+eslint.config.mjs
 .editorconfig
 .eslintignore
 .gitattributes
@@ -7,9 +7,12 @@
 .gitignore
 .github
 .travis.yml
-.vscode
+.vscode/
 src/
 test/
 docs/
+scripts/
 tslint.json
 tsconfig.buildinfo
+*.tsbuildinfo
+*.log
