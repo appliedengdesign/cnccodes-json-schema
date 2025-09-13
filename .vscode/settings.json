@@ -15,31 +15,27 @@
             "strings": true
         },
         "editor.suggest.insertMode": "replace",
-        "gitlens.codeLens.scopes": [
-            "document"
-        ],
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jsonc]": {
         "editor.quickSuggestions": {
             "strings": true
         },
         "editor.suggest.insertMode": "replace",
-        "gitlens.codeLens.scopes": [
-            "document"
-        ],
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "eslint.alwaysShowStatus": true,
+    "editor.codeActionsOnSave": {
+        "source.sortImports": "always"
+    },
     "eslint.format.enable": true,
-    "eslint.validate": [
-        "typescript",
-        "javascript"
-    ],
+    "eslint.validate": ["typescript", "javascript", "json", "markdown", "yaml"],
     "prettier.requireConfig": true
 }
