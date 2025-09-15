@@ -3,13 +3,13 @@
  *  Licensed under the MIT License. See License.md in the project root for license information.
  * -------------------------------------------------------------------------------------------- */
 
-export interface CNCCodesJSONSchema {
+export type CNCCodesJSONSchema = {
     readonly $schema?: string;
     readonly title: string;
     readonly description: string;
     readonly keywords?: string[];
     readonly type: CodeTypes;
-    readonly codes?: { [key: string]: any };
+    readonly codes?: Codes;
     readonly machineType: MachineTypes;
     readonly variant?: Variant;
 }
@@ -34,6 +34,10 @@ export type Code = {
     shortDesc: string;
     desc?: string;
     parameters: Parameters;
+}
+
+export interface Codes extends Record<string, Code> {
+    [code: string]: Code;
 }
 
 export enum Categories {
