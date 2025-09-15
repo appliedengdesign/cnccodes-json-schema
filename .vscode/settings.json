@@ -15,7 +15,8 @@
             "strings": true
         },
         "editor.suggest.insertMode": "replace",
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnSave": false
     },
     "[jsonc]": {
         "editor.quickSuggestions": {
