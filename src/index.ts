@@ -4,4 +4,4 @@
  * -------------------------------------------------------------------------------------------- */
 'use strict';
 
-export { default as cncCodesJSONSchema } from './schema/cnccodes.schema.json';
+export { default as cncCodesJSONSchema } from './schemas/draft/2022-07/cnccodes.schema.json';
