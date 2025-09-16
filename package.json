@@ -35,7 +35,7 @@
     },
     "scripts": {
         "build": "npm run test && tsc --project tsconfig.build.json",
-        "build-ghp": "npx ts-node ./scripts/build-ghpages.ts",
+        "build-ghp": "npx tsx ./scripts/build-ghpages.ts",
         "clean": "shx rm -rf dist/*",
         "compile": "tsc",
         "lint": "eslint",
@@ -44,7 +44,7 @@
         "prepack": "npm run clean && npm run build",
         "pretty": "prettier --config .prettierrc --log-level warn --check .",
         "pretty:fix": "prettier --config .prettierrc --log-level warn --write .",
-        "test": "mocha --require ts-node/register test/**/*.ts"
+        "test": "mocha --require tsx test/**/*.ts"
     },
     "devDependencies": {
         "@eslint/js": "^9.35.0",
@@ -65,7 +65,7 @@
         "mocha": "^11.7.2",
         "prettier": "^3.6.2",
         "shx": "^0.4.0",
-        "ts-node": "^10.9.2",
+        "tsx": "^4.20.5",
         "typescript-eslint": "^8.43.0"
     }
 }
