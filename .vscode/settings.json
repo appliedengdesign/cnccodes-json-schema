@@ -8,15 +8,15 @@
     // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
     "typescript.tsc.autoDetect": "off",
     "[typescript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[json]": {
         "editor.quickSuggestions": {
             "strings": true
         },
         "editor.suggest.insertMode": "replace",
-        "editor.defaultFormatter": "vscode.json-language-features",
-        "editor.formatOnSave": false
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
     },
     "[jsonc]": {
         "editor.quickSuggestions": {
@@ -33,9 +33,6 @@
     },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.codeActionsOnSave": {
-        "source.sortImports": "always"
-    },
     "eslint.format.enable": true,
     "eslint.validate": ["typescript", "javascript", "json", "markdown", "yaml"],
     "prettier.requireConfig": true
