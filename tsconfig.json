@@ -18,7 +18,9 @@
         "allowJs": true,
         "checkJs": true,
         "incremental": true,
-        "tsBuildInfoFile": ".tsbuildinfo"
+        "tsBuildInfoFile": ".tsbuildinfo",
+        "allowImportingTsExtensions": true,
+        "rewriteRelativeImportExtensions": true
     },
     "include": ["src/**/*.ts", "scripts/**/*.ts", "test/**/*.ts"],
     "exclude": ["node_modules", "dist"]

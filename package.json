@@ -1,8 +1,12 @@
 {
     "name": "@appliedengdesign/cnccodes-json-schema",
     "version": "0.3.0",
+    "type": "module",
     "description": "JSON Schema for CNC G & M Codes",
-    "author": "Mike Centola",
+    "author": {
+        "name": "Mike Centola",
+        "url": "https://github.com/mikecentola"
+    },
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -27,6 +31,9 @@
     },
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": "./dist/index.js"
+    },
     "files": [
         "dist/"
     ],
@@ -60,7 +67,6 @@
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-import-x": "^4.16.1",
-        "eslint-plugin-prettier": "^5.5.4",
         "eslint-plugin-yml": "^1.18.0",
         "mocha": "^11.7.2",
         "prettier": "^3.6.2",

@@ -2,6 +2,5 @@
  *  Copyright (c) Applied Eng & Design All rights reserved.
  *  Licensed under the MIT License. See License.md in the project root for license information.
  * -------------------------------------------------------------------------------------------- */
-'use strict';
 
-export { default as cncCodesJSONSchema } from './schemas/draft/2022-07/cnccodes.schema.json';
+export { default as cncCodesJSONSchema } from './schemas/draft/2022-07/cnccodes.schema.json' with { type: 'json' };
