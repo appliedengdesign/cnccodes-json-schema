@@ -5,6 +5,7 @@
 
 export type CNCCodesJSONSchema = {
     readonly $schema?: string;
+    readonly $id: string;
     readonly title: string;
     readonly description: string;
     readonly keywords?: string[];
