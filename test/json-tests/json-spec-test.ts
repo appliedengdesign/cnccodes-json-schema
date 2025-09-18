@@ -4,36 +4,47 @@
  *  Licensed under the MIT License. See License.md in the project root for license information.
  * -------------------------------------------------------------------------------------------- */
 
+import path from 'node:path';
 import { Ajv2020 } from 'ajv/dist/2020.js';
 import { expect } from 'chai';
 import { CNCCodesJSONSchema } from '../../src/types/schema.ts';
 import { loadJSON, readDirRecursive } from '../../src/util/helpers.ts';
-import gsample from '../sample/g-sample.json' with { type: 'json' };
-import msample from '../sample/m-sample.json' with { type: 'json' };
-import variant from '../sample/variant-sample.json' with { type: 'json' };
 
-const _META_SCHEMA = 'https://json-schema.org/draft/2020-12/schema';
-const _BASE_URL = 'https://appliedengdesign.github.io/cnccodes-json-schema';
-const _TITLE = 'JSON Schema File Test';
-const __schemadir = './src/schemas';
-const schemas = await readDirRecursive(__schemadir);
+const __metaSchema = 'https://json-schema.org/draft/2020-12/schema';
+const __baseUrl = 'https://appliedengdesign.github.io/cnccodes-json-schema';
+const __latestSpec = '2022-07';
+const __testTitle = 'JSON Schema File Test';
+const __schemaDir = './src/schemas';
 
+const __sampleDir = './samples';
+const __sampleFileNames = {
+    _gInvalid: 'g.invalid.json',
+    _mValid: 'm.valid.json',
+    _variant: 'variant.valid.json',
+};
+
+// Get available schemas from source dir
+const schemas = await readDirRecursive(__schemaDir);
+
+// Create AJV instance
 const ajv = new Ajv2020({ allErrors: true, verbose: true, code: { esm: true } });
 
-process.stdout.write(`- ${_TITLE} -`);
+// Display test title
+process.stdout.write(`- ${__testTitle} -`);
 
+// Iterate through schemas and run tests
 for (const key in schemas) {
     const spec = await loadJSON<CNCCodesJSONSchema>(schemas[key]);
     const __schemaver = `draft/${key}`;
 
-    // Do tests on each of the draft versions of the schema as JSON files
+    // Run tests on schema
     describe(`${__schemaver}`, () => {
         it('has the correct $schema', () => {
-            expect(spec).to.have.property('$schema', _META_SCHEMA);
+            expect(spec).to.have.property('$schema', __metaSchema);
         });
 
         it('has the correct $id', () => {
-            expect(spec).to.have.property('$id', `${_BASE_URL}/${__schemaver}/schema`);
+            expect(spec).to.have.property('$id', `${__baseUrl}/${__schemaver}/schema`);
         });
 
         it('has a title', () => {
@@ -48,14 +59,41 @@ for (const key in schemas) {
             expect(spec).to.have.property('type', 'object');
         });
 
+        it('has required properties\n', () => {
+            expect(spec).to.have.property('required').and.to.be.an('array').that.does.not.include('variant');
+        });
+
+        // Run validation tests with schema
         describe('Validation', () => {
             const valid = ajv.compile(spec);
             it('shoud pass AJV validation', () => {
                 expect(typeof valid).to.equal('function');
             });
 
-            it('validate correct G-Code', () => {
-                const test = valid(msample);
+            it('can validate correct M-Code', async () => {
+                const json = await loadJSON(
+                    path.join(__sampleDir, key === __latestSpec ? 'latest' : key, __sampleFileNames._mValid),
+                );
+                const test = valid(json);
+                expect(test).to.be.true;
+            });
+
+            it('can invalidate bad G-Code', async () => {
+                const json = await loadJSON(
+                    path.join(__sampleDir, key === __latestSpec ? 'latest' : key, __sampleFileNames._gInvalid),
+                );
+                const test = valid(json);
+                expect(test).to.be.false;
+                if (valid.errors) {
+                    expect(valid.errors[0].params.missingProperty).to.be.equal('shortDesc');
+                }
+            });
+
+            it('can validate a variant', async () => {
+                const json = await loadJSON(
+                    path.join(__sampleDir, key === __latestSpec ? 'latest' : key, __sampleFileNames._variant),
+                );
+                const test = valid(json);
                 expect(test).to.be.true;
             });
         });
