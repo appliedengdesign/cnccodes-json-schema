@@ -3,8 +3,8 @@
  *  Licensed under the MIT License. See License.md in the project root for license information.
  * -------------------------------------------------------------------------------------------- */
 
-import { readdir, readFile } from 'fs/promises';
-import { basename, dirname, join } from 'path';
+import { readdir, readFile } from 'node:fs/promises';
+import { basename, dirname, join } from 'node:path';
 
 export async function readDirRecursive(
     dirPath: string,
