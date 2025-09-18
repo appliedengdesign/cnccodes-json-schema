@@ -3,63 +3,56 @@
  *  Licensed under the MIT License. See License.md in the project root for license information.
  * -------------------------------------------------------------------------------------------- */
 
-export type CNCCodesJSONSchema = {
-    readonly $schema?: string;
-    readonly $id: string;
-    readonly title: string;
-    readonly description: string;
-    readonly keywords?: string[];
-    readonly type: CodeTypes;
-    readonly codes?: Codes;
-    readonly machineType: MachineTypes;
-    readonly variant?: Variant;
+// Very lightly typed schema
+
+interface BaseJSONSchema {
+    $schema?: string;
+    $id?: string;
+    $vocabulary?: Record<string, boolean>;
+    $anchor?: string;
+    $dynamicAnchor?: string;
+    $defs?: Record<string, JSONProps>;
+    title?: string;
+    description?: string;
+    depreciated?: string;
+    readOnly?: boolean;
+    writeOnly?: boolean;
+    required?: string[];
+    additionalProperties?: boolean;
 }
 
-export enum MachineTypes {
-    EDM = "edm",
-    Laser = "laser",
-    Lathe = "lathe",
-    Mill = "mill",
-    Printer = "printer",
-    Swiss = "swiss",
+interface JSONStringKeywords {
+    minLength?: number;
+    maxLength?: number;
+    pattern?: string;
+    format?: string;
 }
 
-export enum CodeTypes {
-    G = 'gcode',
-    M = 'mcode'
+interface JSONProps {
+    description?: string;
+    type: string;
+    [key: string]: unknown;
 }
 
-export type Code = {
-    category: Categories;
-    modal?: boolean;
-    shortDesc: string;
-    desc?: string;
-    parameters: Parameters;
+interface JSONArrayType extends JSONProps, JSONStringKeywords {
+    type: 'array';
+    items: JSONProps;
 }
 
-export interface Codes extends Record<string, Code> {
-    [code: string]: Code;
+interface JSONEnumType extends JSONProps {
+    enum?: string[];
 }
 
-export enum Categories {
-    Motion = 'motion',
-    Coordinate = 'coordinate',
-    Compensation = 'compensation',
-    Canned = 'canned',
-    Other = 'other',
+interface CNCCJSONSchema extends BaseJSONSchema {
+    properties: CNCCodesProperties;
 }
 
-export type Parameter = {
-    shortDesc: string;
-    desc?: string;
-    optional: boolean;
+interface CNCCodesProperties extends BaseJSONSchema, Record<string, unknown> {
+    keywords: JSONArrayType;
+    type: JSONEnumType;
+    machineType: JSONEnumType;
+    variant: JSONProps;
+    codes: JSONProps;
 }
 
-export interface Parameters extends Record<string, Parameter> {
-    [parameter: string]: Parameter;
-}
-
-export interface Variant {
-    readonly name?:   string;
-    readonly remove?: string[];
-}
+export type CNCCodesJSONSchema = CNCCJSONSchema;
