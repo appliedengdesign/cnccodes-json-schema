@@ -1,16 +1,8 @@
 {
-    "$schema": "../../src/schema/cnccodes.schema.json",
+    "$schema": "../../src/schemas/draft/2022-06/cnccodes.schema.json",
     "type": "gcode",
     "machineType": "mill",
     "title": "G Code Milling Reference",
-    "description": "G-Code Reference for Milling Machine Tools",
-    "variant": {
-        "name": "snpmaker",
-        "remove": [
-            "M07",
-            "M08"
-        ]
-    },
     "codes": {
         "G00": {
             "category": "motion",
@@ -27,7 +19,7 @@
                     "optional": true
                 },
                 "Z": {
-                    "shortDesc": "Z-Axis motion command",
+                    "desc": "Z-Axis motion command",
                     "optional": true
                 }
             }

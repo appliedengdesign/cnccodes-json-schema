@@ -1,9 +1,10 @@
 {
-    "$schema": "../../src/schema/cnccodes.schema.json",
+    "$schema": "../../src/schemas/draft/2022-07/cnccodes.schema.json",
     "type": "mcode",
     "machineType": "mill",
     "title": "M Code Milling Reference",
     "description": "M Code Reference for Milling Machine Tools",
+    "keywords": ["mazak", "mill", "milling"],
     "codes": {
         "M00": {
             "category": "mcode",

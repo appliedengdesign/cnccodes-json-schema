@@ -1,9 +1,9 @@
 {
-    "$schema": "../../src/schema/cnccodes.schema.json",
+    "$schema": "../../src/schemas/draft/2022-06/cnccodes.schema.json",
     "type": "gcode",
     "machineType": "mill",
     "title": "G Code Milling Reference",
-    "description": "G-Code Reference for Milling Machine Tools",
+    "variant": "brdgeprt",
     "codes": {
         "G00": {
             "category": "motion",
@@ -20,7 +20,7 @@
                     "optional": true
                 },
                 "Z": {
-                    "desc": "Z-Axis motion command",
+                    "shortDesc": "Z-Axis motion command",
                     "optional": true
                 }
             }
