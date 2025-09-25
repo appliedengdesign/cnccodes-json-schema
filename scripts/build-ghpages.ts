@@ -8,7 +8,7 @@ const start = process.hrtime();
 
 import fs from 'fs';
 import path from 'path';
-import cncCodesJSONSchema from '../src/schemas//draft/2022-07/cnccodes.schema.json';
+import cncCodesJSONSchema from '../src/schemas//draft/2022-07/cnccodes.schema.json' with { type: 'json' };
 
 // UPDATE DOCS //
 
