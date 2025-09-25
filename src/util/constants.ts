@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.md in the project root for license information.
  * -------------------------------------------------------------------------------------------- */
 
-export { cncCodesJSONSchema, CncCodesSchema } from './cncCodesSchema.ts';
-
-export { CNCCodesJSONSchemaType } from './types/schema.ts';
-export { SchemaVer } from './types/schemaVer.ts';
+export const __LATEST_SCHEMA_VER__ = 'draft/2022-07';
+export const __SCHEMA_DIR__ = './schemas';
+export const __SCHEMA_FILE_NAME__ = 'cnccodes.schema.json';

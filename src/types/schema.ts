@@ -55,4 +55,4 @@ interface CNCCodesProperties extends BaseJSONSchema, Record<string, unknown> {
     codes: JSONProps;
 }
 
-export type CNCCodesJSONSchema = CNCCJSONSchema;
+export type CNCCodesJSONSchemaType = CNCCJSONSchema;
