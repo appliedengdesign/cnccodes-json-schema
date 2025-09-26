@@ -18,23 +18,7 @@ class CNCCodesSchema {
         this._curSchema = schema || 'latest';
     }
 
-    private async _initialize(): Promise<boolean> {
-        if (
-            await this._loadSchema(this._curSchema)
-                .then(() => {
-                    return true;
-                })
-                .catch(err => {
-                    console.error('Error initializing...', err);
-                })
-        ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private async _loadSchema(s: SchemaVer): Promise<boolean> {
+    private async _loadSchema(s: SchemaVer): Promise<CNCCodesJSONSchemaType> {
         const schemaPath = join(
             import.meta.dirname,
             __SCHEMA_DIR__,
@@ -42,36 +26,41 @@ class CNCCodesSchema {
             __SCHEMA_FILE_NAME__,
         );
 
-        console.info(schemaPath);
-
         const [data, err] = await tryCatch(async () => {
             return await loadJSON<CNCCodesJSONSchemaType>(schemaPath);
         });
 
         if (err) {
-            console.error('Error loading schema...', s);
-            return Promise.reject(err);
+            throw new Error('Error loading schema...');
         } else if (data) {
-            this._schemaObj = data;
-            this._curSchema = s;
             this._isLoaded = true;
-            return true;
+            return (this._schemaObj = data);
         } else {
-            return false;
+            throw new Error('Error loading schema');
         }
     }
 
-    async init(): Promise<boolean> {
-        return await this._initialize();
+    private _unload() {
+        this._schemaObj = undefined;
+        this._isLoaded = false;
     }
 
-    async setSchema(s: SchemaVer): Promise<boolean> {
-        this._curSchema = s;
-        return await this._loadSchema(s);
+    async init(): Promise<void> {
+        if (!this._isLoaded) {
+            await this._loadSchema(this._curSchema);
+        }
+    }
+
+    async setSchema(s: SchemaVer) {
+        if (this._curSchema !== s) {
+            this._unload();
+            this._curSchema = s;
+            await this.init();
+        }
     }
 
     get isLoaded(): boolean {
-        return this.isLoaded;
+        return this._isLoaded;
     }
 
     get schema(): CNCCodesJSONSchemaType | undefined {
