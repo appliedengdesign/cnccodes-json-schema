@@ -6,7 +6,6 @@
 import js from '@eslint/js';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
-import esPrettier from 'eslint-config-prettier/flat';
 import importX from 'eslint-plugin-import-x';
 import yml from 'eslint-plugin-yml';
 import { defineConfig, globalIgnores } from 'eslint/config';
@@ -145,9 +144,19 @@ export default defineConfig([
 
     {
         // Turn off rules that will cause errors with chai
-        files: ['test/*.ts'],
+        files: ['test/**/*.ts'],
 
         rules: {
+            '@typescript-eslint/no-floating-promises': [
+                'error',
+                {
+                    'allowForKnownSafeCalls': [
+                        { 'from': 'package', 'name': 'it', 'package': 'node:test' },
+                        { 'from': 'package', 'name': 'describe', 'package': 'node:test' },
+                        { 'from': 'package', 'name': 'suite', 'package': 'node:test' },
+                    ],
+                },
+            ],
             'no-unused-expressions': 'off',
             '@typescript-eslint/no-unused-expressions': 'off',
         },
@@ -184,6 +193,4 @@ export default defineConfig([
         files: ['**/*.yaml', '**/*.yml'],
         extends: [yml.configs['flat/recommended']],
     },
-
-    esPrettier,
 ]);
