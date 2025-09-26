@@ -16,158 +16,130 @@ Previous Versions: [2022-06](https://appliedengdesign.github.io/cnccodes-json-sc
 
 ```json
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-07/schema",
-    "title": "G/M Code Dictionary",
-    "description": "JSON Schema for CNC G & M Codes",
-    "type": "object",
-    "required": [
-        "title",
-        "description",
-        "type",
-        "machineType"
-    ],
-    "properties": {
-        "$schema": {
-            "description": "Link to this schema",
-            "type": "string"
-        },
-        "title": {
-            "description": "Descriptive title of the JSON Reference",
-            "type": "string"
-        },
-        "description": {
-            "description": "Description of the JSON Reference",
-            "type": "string"
-        },
-        "keywords": {
-            "description": "An Array of string keywords describing the JSON Reference (Optional)",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "type": {
-            "description": "The type of code (G or M)",
-            "type": "string",
-            "enum": [
-                "gcode",
-                "mcode"
-            ]
-        },
-        "machineType": {
-            "description": "The type of CNC machine",
-            "type": "string",
-            "enum": [
-                "edm",
-                "mill",
-                "lathe",
-                "laser",
-                "printer",
-                "swiss"
-            ]
-        },
-        "variant": {
-            "description": "Defined if G/M Codes are for specific MTB/3DP Variant. (Must be lower case, 3-8 characters)",
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 8,
-                    "pattern": "[a-z0-9]"
-                },
-                "remove": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "uniqueItems": true
-                }
-            }
-        },
-        "codes": {
-            "description": "Individual G/M Codes",
-            "type": "object",
-            "patternProperties": {
-                "^G|^M": {
-                    "type": "object",
-                    "properties": {
-                        "category": {
-                            "description": "Category for the code",
-                            "type": "string",
-                            "enum": [
-                                "motion",
-                                "coordinate",
-                                "compensation",
-                                "canned",
-                                "other",
-                                "mcode"
-                            ]
-                        },
-                        "modal": {
-                            "description": "Modal / Non-Modal (boolean)",
-                            "type": "boolean"
-                        },
-                        "shortDesc": {
-                            "description": "A short description of the code",
-                            "type": "string",
-                            "minLength": 3
-                        },
-                        "desc": {
-                            "description": "A longer description with markdown formatting",
-                            "type": "string",
-                            "minLength": 3
-                        },
-                        "parameters": {
-                            "$ref": "#/$defs/parameters"
-                        }
-                    },
-                    "additionalProperties": false,
-                    "required": [
-                        "category",
-                        "shortDesc"
-                    ]
-                },
-                "additionalProperties": false
-            },
-            "minProperties": 1
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-07/schema",
+  "title": "G/M Code Dictionary",
+  "description": "JSON Schema for CNC G & M Codes",
+  "type": "object",
+  "required": ["title", "description", "type", "machineType"],
+  "properties": {
+    "$schema": {
+      "description": "Link to this schema",
+      "type": "string"
     },
-    "additionalProperties": false,
-    "$defs": {
-        "parameters": {
-            "description": "An array of possible parameters to the code",
-            "type": "object",
-            "patternProperties": {
-                "^[A-Z]{1}": {
-                    "type": "object",
-                    "properties": {
-                        "shortDesc": {
-                            "description": "A short description of the parameter",
-                            "type": "string",
-                            "minLength": 3
-                        },
-                        "desc": {
-                            "description": "A description of the parameter",
-                            "type": "string",
-                            "minLength": 3
-                        },
-                        "optional": {
-                            "description": "Parameter is required (boolean)",
-                            "type": "boolean"
-                        }
-                    },
-                    "required": [
-                        "shortDesc",
-                        "optional"
-                    ],
-                    "additionalProperties": false
-                }
-            },
-            "minProperties": 1
+    "title": {
+      "description": "Descriptive title of the JSON Reference",
+      "type": "string"
+    },
+    "description": {
+      "description": "Description of the JSON Reference",
+      "type": "string"
+    },
+    "keywords": {
+      "description": "An Array of string keywords describing the JSON Reference (Optional)",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "type": {
+      "description": "The type of code (G or M)",
+      "type": "string",
+      "enum": ["gcode", "mcode"]
+    },
+    "machineType": {
+      "description": "The type of CNC machine",
+      "type": "string",
+      "enum": ["edm", "mill", "lathe", "laser", "printer", "swiss"]
+    },
+    "variant": {
+      "description": "Defined if G/M Codes are for specific MTB/3DP Variant. (Must be lower case, 3-8 characters)",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 8,
+          "pattern": "[a-z0-9]"
+        },
+        "remove": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
         }
+      }
+    },
+    "codes": {
+      "description": "Individual G/M Codes",
+      "type": "object",
+      "patternProperties": {
+        "^G|^M": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "description": "Category for the code",
+              "type": "string",
+              "enum": ["motion", "coordinate", "compensation", "canned", "other", "mcode"]
+            },
+            "modal": {
+              "description": "Modal / Non-Modal (boolean)",
+              "type": "boolean"
+            },
+            "shortDesc": {
+              "description": "A short description of the code",
+              "type": "string",
+              "minLength": 3
+            },
+            "desc": {
+              "description": "A longer description with markdown formatting",
+              "type": "string",
+              "minLength": 3
+            },
+            "parameters": {
+              "$ref": "#/$defs/parameters"
+            }
+          },
+          "additionalProperties": false,
+          "required": ["category", "shortDesc"]
+        },
+        "additionalProperties": false
+      },
+      "minProperties": 1
     }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "parameters": {
+      "description": "An array of possible parameters to the code",
+      "type": "object",
+      "patternProperties": {
+        "^[A-Z]{1}": {
+          "type": "object",
+          "properties": {
+            "shortDesc": {
+              "description": "A short description of the parameter",
+              "type": "string",
+              "minLength": 3
+            },
+            "desc": {
+              "description": "A description of the parameter",
+              "type": "string",
+              "minLength": 3
+            },
+            "optional": {
+              "description": "Parameter is required (boolean)",
+              "type": "boolean"
+            }
+          },
+          "required": ["shortDesc", "optional"],
+          "additionalProperties": false
+        }
+      },
+      "minProperties": 1
+    }
+  }
 }
 ```
 
@@ -212,7 +184,7 @@ For information on contributing, please refer to the [CONTRIBUTING](https://gith
 
 ## About Applied Eng & Design
 
-We are a full service engineering and design firm, specializing in CAD/CAM, CNC milling, rapid prototyping, training and more.  We also like to dabble in Arudino / RaspberryPi projects, electronics, drones and robotics projects! Subscribe to our YouTube channel for videos on our projects, screencast tutorials, and more!
+We are a full service engineering and design firm, specializing in CAD/CAM, CNC milling, rapid prototyping, training and more. We also like to dabble in Arudino / RaspberryPi projects, electronics, drones and robotics projects! Subscribe to our YouTube channel for videos on our projects, screencast tutorials, and more!
 
 Follow us on [Twitter](https://twitter.com/appliedengdes) & [Instagram](https://instagram.com/appliedengdes), and like our [Facebook Page](https://facebook.com/appliedengdesign)!
 

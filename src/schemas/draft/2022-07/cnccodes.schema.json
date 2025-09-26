@@ -4,12 +4,7 @@
     "title": "G/M Code Dictionary",
     "description": "JSON Schema for CNC G & M Codes",
     "type": "object",
-    "required": [
-        "title",
-        "description",
-        "type",
-        "machineType"
-    ],
+    "required": ["title", "description", "type", "machineType"],
     "properties": {
         "$schema": {
             "description": "Link to this schema",
@@ -33,22 +28,12 @@
         "type": {
             "description": "The type of code (G or M)",
             "type": "string",
-            "enum": [
-                "gcode",
-                "mcode"
-            ]
+            "enum": ["gcode", "mcode"]
         },
         "machineType": {
             "description": "The type of CNC machine",
             "type": "string",
-            "enum": [
-                "edm",
-                "mill",
-                "lathe",
-                "laser",
-                "printer",
-                "swiss"
-            ]
+            "enum": ["edm", "mill", "lathe", "laser", "printer", "swiss"]
         },
         "variant": {
             "description": "Defined if G/M Codes are for specific MTB/3DP Variant. (Must be lower case, 3-8 characters)",
@@ -79,14 +64,7 @@
                         "category": {
                             "description": "Category for the code",
                             "type": "string",
-                            "enum": [
-                                "motion",
-                                "coordinate",
-                                "compensation",
-                                "canned",
-                                "other",
-                                "mcode"
-                            ]
+                            "enum": ["motion", "coordinate", "compensation", "canned", "other", "mcode"]
                         },
                         "modal": {
                             "description": "Modal / Non-Modal (boolean)",
@@ -107,10 +85,7 @@
                         }
                     },
                     "additionalProperties": false,
-                    "required": [
-                        "category",
-                        "shortDesc"
-                    ]
+                    "required": ["category", "shortDesc"]
                 },
                 "additionalProperties": false
             },
@@ -141,10 +116,7 @@
                             "type": "boolean"
                         }
                     },
-                    "required": [
-                        "shortDesc",
-                        "optional"
-                    ],
+                    "required": ["shortDesc", "optional"],
                     "additionalProperties": false
                 }
             },

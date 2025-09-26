@@ -1,8 +1,8 @@
---- 
+---
 ---
 
-@import "{{ site.theme }}";
+@import '{{ site.theme }}';
 
 #main-content {
-	width: 840px;
+    width: 840px;
 }

@@ -6,7 +6,7 @@ All changes to the CNC Codes JSON Schema will be documented here.
 
 ### New Features
 
-- *BREAKING* Added `remove` array property to `variant` (Now an object) for modifying JSON for which it is a variant
+- _BREAKING_ Added `remove` array property to `variant` (Now an object) for modifying JSON for which it is a variant
 
 ### Fixes
 
