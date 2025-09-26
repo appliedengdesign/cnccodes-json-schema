@@ -1,8 +1,8 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
-        "target": "es2024",
-        "lib": ["es2024"],
+        "target": "esnext",
+        "lib": ["esnext"],
         "module": "nodenext",
         "declaration": true,
         "moduleResolution": "nodenext",
